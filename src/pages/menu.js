@@ -22,7 +22,7 @@ class Menu extends Component{
         },()=>{this.componentDidMount()})
     }
     handelSearch = (val)=>{
-        fetch("http://localhost:8000/api/search",{
+        fetch("https://yummipizza.herokuapp.com/api/search",{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
@@ -41,7 +41,7 @@ class Menu extends Component{
         )
     }
     componentDidMount(){
-        fetch("http://localhost:8000/api/menu?page="+this.state.page)
+        fetch("https://yummipizza.herokuapp.com/api/menu?page="+this.state.page)
         .then(res => res.json())
         .then(
           (result) => {

@@ -17,7 +17,7 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        fetch("http://localhost:8000/api/home?page=")
+        fetch("https://yummipizza.herokuapp.com/api/home")
         .then(res => res.json())
         .then(
           (result) => {

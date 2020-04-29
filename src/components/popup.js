@@ -47,15 +47,16 @@ class PopupComponent extends Component{
         }
 
         newOrder = ()=>{
+          alert("s")
             fetch("http://localhost:8000/api/newOrder",{
-              method: 'post',
+              method: 'POST',
               headers: {'Content-Type':'application/json'},
               body: JSON.stringify({
                 "order":this.props.order.order,
                 "user_id":this.props.user?this.props.user.id:null,
                 "total":this.state.total,
                 "info" :this.props.order.info
-            })})
+              })})
             .then(res => res.json())
             .then(
               (result) => {

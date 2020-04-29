@@ -64,7 +64,7 @@ class Auth extends Component{
     }
     handleLoginSubmits = (e)=>{
         e.preventDefault();
-        fetch("http://localhost:8000/api/login",{
+        fetch("https://yummipizza.herokuapp.com/api/login",{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
@@ -96,7 +96,7 @@ class Auth extends Component{
 
     handleRegisterSubmits=(e)=>{
         e.preventDefault();
-        fetch("http://localhost:8000/api/register",{
+        fetch("https://yummipizza.herokuapp.com/api/register",{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({

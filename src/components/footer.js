@@ -93,7 +93,7 @@ class FooterComponent extends Component{
                     <div class="footer_border"></div>
                     <div class="row">
                         <div class="col-xl-12 copy_right_text">
-                            Copyright ©2020 All rights reserved to  <b class='copy_right_name'> M_Taher</b> 
+                            Copyright ©2020 All rights reserved to  <b ><a href="https://api.whatsapp.com/send?phone=++201121388128" class='copy_right_name'>M_Taher</a> </b> 
                         </div>
                     </div>
                 </div>

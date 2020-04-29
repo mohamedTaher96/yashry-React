@@ -32,17 +32,14 @@ class Header extends Component{
                     )
                     }
                 </Nav>
-                    <a>
-                        <p>01121388128</p>
+                    <a href="#">    
+                        <Feather name='instagram'  color='#fff' size={30}/>
                     </a>
                     <a href="#">    
-                        <Feather name='instagram'  color='#F0542C' size={30}/>
+                        <Feather name='facebook'  color='#fff' size={30}/>
                     </a>
                     <a href="#">    
-                        <Feather name='facebook'  color='#F0542C' size={30}/>
-                    </a>
-                    <a href="#">    
-                        <Feather name='twitter'  color='#F0542C' size={30}/>
+                        <Feather name='twitter'  color='#fff' size={30}/>
                     </a>
                
                 </Navbar.Collapse>
