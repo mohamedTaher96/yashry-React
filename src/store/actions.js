@@ -1,87 +1,44 @@
 
-export const signIn = (user)=>{
-
+export const _storeData = (data)=>{
     return{
-        type:"SIGN_IN",
-        user:user
+        type:"STORE_DATA",
+        data:data
     }
 }
-export const signOut = ()=>{
-    
+export const _setCurrency = (item)=>{
     return{
-        type:"SIGN_OUT",
-
-    }
-}
-
-export const orderNewItem = (item)=>{
-
-    return{
-        type:"ORDER_NEW_ITEM",
+        type:"SET_CURRENCY",
         item:item
-
     }
 }
 
-export const removeOrderItem = (id,price)=>{
+export const _PlusCart = (item)=>{
     return{
-        type:"REMOVE_ORDER_ITEM",
-        id:id,
-        price:price
+        type:"PLUS_CART",
+        item:item
     }
 }
-export const handelChangeQty = (qty,id)=>{
+
+export const _plusProduct = (id)=>{
     return{
-        type:"CHANGE_QTY",
-        qty:qty,
+        type:"PLUS_PRODUCT",
         id:id
     }
 }
 
-export const clearOrder = ()=>{
+export const _minsProduct = (id)=>{
     return{
-        type:"CLEAR_ORDER",
-    }
-}
-export const orderInfo = (info)=>{
-    return{
-        type:"ORDER_INFO",
-        info : info
-    }
-}
-
-export const openModal = (type)=>{
-    return{
-        type:"OPEN_MODAL",
-        modal:type
-    }
-}
-
-export const closeModal = ()=>{
-    return{
-        type:"CLOSE_MODAL",
-    }
-}
-
-
-export const handelNewFavorite = (item)=>{
-    return{
-        type:"MAKE_FAVORITE",
-        item:item
-    }
-}
-export const handelRemoveFavorite = (id)=>{
-    return{
-        type:"REMOVE_FAVORITE",
+        type:"MINS_PRODUCT",
         id:id
     }
 }
 
-export const handelNewOrder = (item)=>{
+export const _plusBill = (bill)=>{
     return{
-        type:"MAKE_ORDER",
-        item:item
+        type:"PLUS_BILL",
+        bill:bill
     }
 }
+
 
 
