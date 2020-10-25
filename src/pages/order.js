@@ -3,7 +3,8 @@ import Header from './../components/header'
 import FooterComponent from './../components/footer'
 import PopComponent from './../components/popup'
 import {Card,Button} from 'react-bootstrap'
-import Table from 'react-bootstrap/Table'
+
+import { connect } from 'react-redux'
 
 class Order extends Component{
 
@@ -19,17 +20,18 @@ class Order extends Component{
     }
 
     render(){
-        var orders = JSON.parse(localStorage.getItem('orders'))?JSON.parse(localStorage.getItem('orders')):[];
-        var orders = orders.map((item,index)=>(
+        console.log(this.props.order_storage)
+        // var orders = JSON.parse(localStorage.getItem('orders'))?JSON.parse(localStorage.getItem('orders')):[];
+        var orders = this.props.order_storage.map((item,index)=>(
             <Card className="orderLog_card">
             <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
-                <Card.Text>{item.total}EGP</Card.Text>
+                <Card.Text>{item.total} EUR</Card.Text>
                 <Card.Text>{item.date}</Card.Text>
                 <hr/>
                 <ul>
-                {item.order_items.map(orde_item=>(
-                    <li>{orde_item.item.name} - {orde_item.item.price}EGP</li>
+                {item.order_items.map(order_item=>(
+                    <li>{order_item.item.name} - {order_item.item.price*order_item.qty} EUR (qty:{order_item.qty})</li>
                 ))}
                 </ul>
             </Card.Body>
@@ -53,5 +55,9 @@ class Order extends Component{
         )
     }
 }
-
-export default Order
+const mapStateToProps = (state)=>{
+    return{
+        order_storage : state.user_storage.orders,
+    }
+  }
+export default connect (mapStateToProps,null) (Order)

@@ -17,7 +17,7 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        fetch("https://yummipizza.herokuapp.com/api/home")
+        fetch("http://localhost:8000/api/home")
         .then(res => res.json())
         .then(
           (result) => {
@@ -33,6 +33,7 @@ class Home extends Component{
     }
 
     render(){
+        console.log(this.state.menu)
         return(
             <div>
                 <Header/>

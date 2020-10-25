@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import Popup from "reactjs-popup";
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-import  { Feather } from 'react-web-vector-icons';
+import  { Feather,FontAwesome } from 'react-web-vector-icons';
 import Badge from 'react-bootstrap/Badge'
 import ModalComponent from './modal'
 
@@ -10,9 +10,11 @@ import ModalComponent from './modal'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
+import TextField from '@material-ui/core/TextField';
+
 
 import { connect } from 'react-redux'
-import {openModal,clearOrder,closeModal,removeOrderItem} from './../store/actions'
+import {openModal,clearOrder,closeModal,removeOrderItem,handelNewOrder,handelChangeQty} from './../store/actions'
 
 class PopupComponent extends Component{
     constructor(){
@@ -22,7 +24,9 @@ class PopupComponent extends Component{
           total : 0
         }
         }
-    
+        handleChangeQty=(qty,id)=>{
+          this.props._handelChangeQty(qty.target.value,id)
+        }
         removeItem = (id)=>{
             this.props._removeOrderItem(id)
         }
@@ -47,7 +51,6 @@ class PopupComponent extends Component{
         }
 
         newOrder = ()=>{
-          alert("s")
             fetch("http://localhost:8000/api/newOrder",{
               method: 'POST',
               headers: {'Content-Type':'application/json'},
@@ -71,13 +74,14 @@ class PopupComponent extends Component{
                       }
                     ]
                   });
+                  this.props._handelNewOrder(result.order)
                   this.props._clearOrder()
                   this.props._closeModal()
 
-                  var orders = localStorage.getItem('orders');
-                  orders = orders ? JSON.parse(orders) : [];
-                  orders.unshift((result.order));
-                  localStorage.setItem('orders', JSON.stringify(orders));
+                  // var orders = localStorage.getItem('orders');
+                  // orders = orders ? JSON.parse(orders) : [];
+                  // orders.unshift((result.order));
+                  // localStorage.setItem('orders', JSON.stringify(orders));
                 }
               },
               (error) => {
@@ -86,18 +90,18 @@ class PopupComponent extends Component{
             )
         }
       render(){
-
         let count = 0;
         let total = 0
         const order = this.props.order.order.map((item,index)=>{
-          total += item.price
+          total += (item.price*item.qty)
           count++
           return(
             <tr>
               <td>{index+1}</td>
               <td>{item.name}</td>
-              <td>{item.price}</td>
-              <td><Button className="close_btn" size="sm" variant="outline-light" onClick={()=>{this.removeItem(item.id)}}><Feather name="x" size={22} color="red" /></Button></td>
+              <td><TextField type="Number"  value={item.qty} min={1} onChange={(qty,id)=>{this.handleChangeQty(qty,item.id)}}/></td>
+              <td>{item.price} EUR</td>
+              <td><Button className="close_btn" size="sm" variant="outline-light" onClick={()=>{this.removeItem(item.id)}}><FontAwesome name="close" size={22} color="red" /></Button></td>
             </tr>
           )
         })
@@ -112,6 +116,7 @@ class PopupComponent extends Component{
                 <tr>
                   <th>#</th>
                   <th>type</th>
+                  <th>qty</th>
                   <th>price</th>
                   <td></td>
                 </tr>
@@ -125,7 +130,7 @@ class PopupComponent extends Component{
                   <tr>
                     <th>#</th>
                     <th>total</th>
-                    <th>{total}</th>
+                    <th>{total} EUR</th>
                     <th></th>
                   </tr>
                   <tr>
@@ -145,7 +150,7 @@ const mapStateToProps = (state)=>{
     return{
       order : state.order,
       modal : state.modal.modal,
-      user : state.user.user
+      user : state.user.user,
     }
   }
 const mapDispatchToProps=(dispatch)=>{
@@ -155,6 +160,8 @@ const mapDispatchToProps=(dispatch)=>{
       _clearOrder: ()=>{dispatch(clearOrder())},
       _closeModal : ()=>{dispatch(closeModal())},
       _removeOrderItem : (id)=>{dispatch(removeOrderItem(id))},
+      _handelNewOrder : (item)=>{dispatch(handelNewOrder(item))},
+      _handelChangeQty : (qty,id)=>{dispatch(handelChangeQty(qty,id))},
     }
 }
 

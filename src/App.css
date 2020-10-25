@@ -1,5 +1,9 @@
 @font-face{font-family:EvilIcons;font-style:normal;font-weight:400;src:url(fonts/EvilIcons.ttf) format('truetype')}@font-face{font-family:Feather;font-style:normal;font-weight:400;src:url(fonts/Feather.ttf) format('truetype')}@font-face{font-family:FontAwesome;font-style:normal;font-weight:400;src:url(fonts/FontAwesome.otf) format('truetype')}@font-face{font-family:Foundation;font-style:normal;font-weight:400;src:url(fonts/Foundation.ttf) format('truetype')}@font-face{font-family:Ionicons;font-style:normal;font-weight:400;src:url(fonts/Ionicons.ttf) format('truetype')}@font-face{font-family:MaterialCommunityIcons;font-style:normal;font-weight:400;src:url(fonts/MaterialCommunityIcons.ttf) format('truetype')}@font-face{font-family:MaterialIcons;font-style:normal;font-weight:400;src:url(fonts/MaterialIcons.ttf) format('truetype')}@font-face{font-family:Octicons;font-style:normal;font-weight:400;src:url(fonts/Octicons.ttf) format('truetype')}@font-face{font-family:SimpleLineIcons;font-style:normal;font-weight:400;src:url(fonts/SimpleLineIcons.ttf) format('truetype')}@font-face{font-family:Zocial;font-style:normal;font-weight:400;src:url(fonts/Zocial.ttf) format('truetype')}
 
+a{
+  text-decoration: none !important;
+}
+
 .navbar {
   background-color:#337ab7 !important;
   width: 100%;
@@ -25,7 +29,7 @@
   background-color: #28a745
 }
 .carousel-item{
-  height: 625px;
+  height: 565px;
 }
 .w-100{
   height: 620px;
@@ -248,7 +252,7 @@ button{
 {
   position: fixed;
   z-index: 100;
-  right: 8%;
+  right: 14%;
   top: 90%;
   border-radius: 8%;
 }
@@ -256,10 +260,11 @@ button{
 {
   position: fixed !important;
   z-index: 100 !important;
-  width: 270px !important;
+  width: 320px !important;
   height: 350px !important;
   /* overflow-y:auto; */
   top:210px !important;
+  /* right: 555 !important; */
   border-radius: 6%;
 }
 .pop_up_table
@@ -282,6 +287,7 @@ button{
 }
 .close_btn
 {
+  /* border-radius: 50% !important; */
   margin: -5px;
 }
 .text-muted
@@ -309,7 +315,10 @@ button{
 p{
   margin: 0px;
 }
-
+.carousel-caption
+{
+  z-index: 0 !important;
+}
 @media  (max-height: 650px) {
   .popup-content 
   {
@@ -363,7 +372,7 @@ p{
   }
   .pop_up_button
   {
-    right: 21%;
+    right: 27%;
     
   }
   /* .popup-content 

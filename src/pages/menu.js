@@ -4,7 +4,10 @@ import FooterComponent from './../components/footer'
 import MenuComonent from './../components/menu'
 import PopComponent from './../components/popup'
 import SlickSlider from './../components/slickSlider'
-import {Navbar,Nav,Button,Form,FormControl,NavDropdown} from 'react-bootstrap'
+import {Form,FormControl} from 'react-bootstrap'
+import  { FontAwesome} from 'react-web-vector-icons';
+
+import TextField from '@material-ui/core/TextField';
 
 import { connect } from 'react-redux'
 
@@ -22,12 +25,12 @@ class Menu extends Component{
         },()=>{this.componentDidMount()})
     }
     handelSearch = (val)=>{
-        fetch("https://yummipizza.herokuapp.com/api/search",{
+        fetch("http://localhost:8000/api/search",{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
               "search":val.target.value,
-          })})
+        })})
         .then(res => res.json())
         .then(
           (result) => {
@@ -41,7 +44,7 @@ class Menu extends Component{
         )
     }
     componentDidMount(){
-        fetch("https://yummipizza.herokuapp.com/api/menu?page="+this.state.page)
+        fetch("http://localhost:8000/api/menu?page="+this.state.page)
         .then(res => res.json())
         .then(
           (result) => {
@@ -70,8 +73,8 @@ class Menu extends Component{
                         <span>Pizza Menu</span>
                         <h3>Best Ever Pizza</h3> 
                         <Form inline style={{justifyContent:'center'}}>
-                            <FormControl type="text" placeholder="Search" onChange={(val)=>{this.handelSearch(val)}} className="mr-sm-2" />
-                            <Button variant="outline-success" >Search</Button>
+                            <TextField id="standard-secondary" label="Search" color="secondary" type="text"  onChange={(val)=>{this.handelSearch(val)}} className="mr-sm-2" />
+                            <FontAwesome name="search" />
                         </Form>
                     </div>
                 </div>

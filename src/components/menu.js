@@ -22,10 +22,9 @@ class MenuComponent extends Component{
         this.props.fetchdate(true)
     }
     handelFavorite = (item)=>{
-        this.props.storage.favorites.some(fav=>fav.id==item.id)?
+        this.props.favorite_storage.some(fav=>fav.id==item.id)?
             this.props._handelRemoveFavorite(item.id):
-            this.props._handelNewFavorite(item)
-        
+            this.props._handelNewFavorite(item) 
     }
 
     render(){
@@ -36,13 +35,13 @@ class MenuComponent extends Component{
                         <Card.Img variant="top" src={item.image} />
                     </figure>
                     <div className="favorite" onClick={()=>{this.handelFavorite(item)}}>
-                        {this.props.storage.favorites.some(fav=>fav.id==item.id)?
+                        {this.props.favorite_storage.some(fav=>fav.id==item.id)?
                             <FontAwesome name="heart" color="red" />:
                             <FontAwesome name="heart" />
                         }
                     </div>
                     <div className="price">
-                        <p>{item.price} EGP</p>
+                        <p>{item.price} EUR</p>
                     </div>
                 <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
@@ -58,7 +57,7 @@ class MenuComponent extends Component{
                 dataLength={this.state.items.length} //This is important field to render the next data
                 next={this.fetchData}
                 hasMore={true}
-                loader={  
+                loader={
                 <Button variant="primary" className="form-control" disabled>
                 <Spinner
                     as="span"
@@ -83,7 +82,7 @@ class MenuComponent extends Component{
 }
 const mapStateToProps = (state)=>{
     return{
-      storage : state.user_storage,
+      favorite_storage : state.user_storage.favorites,
     }
   }
 const mapDispatchToProps=(dispatch)=>{

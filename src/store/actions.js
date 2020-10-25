@@ -30,6 +30,13 @@ export const removeOrderItem = (id,price)=>{
         price:price
     }
 }
+export const handelChangeQty = (qty,id)=>{
+    return{
+        type:"CHANGE_QTY",
+        qty:qty,
+        id:id
+    }
+}
 
 export const clearOrder = ()=>{
     return{
@@ -67,6 +74,13 @@ export const handelRemoveFavorite = (id)=>{
     return{
         type:"REMOVE_FAVORITE",
         id:id
+    }
+}
+
+export const handelNewOrder = (item)=>{
+    return{
+        type:"MAKE_ORDER",
+        item:item
     }
 }
 

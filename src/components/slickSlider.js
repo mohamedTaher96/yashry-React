@@ -57,7 +57,7 @@ class SlickSlider extends Component{
                     }
                     </div>  
                     <div className="price">
-                        <p>{item.price} EGP</p>
+                        <p>{item.price} EUR</p>
                     </div>                
               <Card.Body>
                   <Card.Title>{item.name}</Card.Title>
@@ -80,7 +80,7 @@ class SlickSlider extends Component{
                 }
                 </div>
                 <div className="price">
-                    <p>{item.price} EGP</p>
+                    <p>{item.price} EUR</p>
                 </div>
             <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
